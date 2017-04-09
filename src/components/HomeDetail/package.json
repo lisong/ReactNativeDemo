@@ -1,0 +1,6 @@
+{
+  "name": "HomeDetail",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./HomeDetail.js"
+}
