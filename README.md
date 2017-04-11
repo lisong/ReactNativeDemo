@@ -7,7 +7,7 @@
 $ cd /path/to/ReactNativeDemo
 $ npm install
 $ npm run remotedev
-$ react-native run-ios
+$ react-native run-ios --simulator="iPhone 6" 
 ```
 
 ## Redux

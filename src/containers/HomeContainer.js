@@ -14,7 +14,6 @@ class HomeContainer extends React.Component {
     const { forgot, actions, navigation } = this.props;
     return (
       <HomeScreen
-        goHome={()=>{navigation.dispatch({type:'NAV_TAB_HOME'})}}
         goHomeDetail={()=>{
           const navigateAction = NavigationActions.navigate({
             routeName: 'HomeDetail',
@@ -43,7 +42,13 @@ class HomeContainer extends React.Component {
           })
           navigation.dispatch(navigateAction)
         }}
-        goBack={()=>{navigation.dispatch(NavigationActions.back())}}
+        goExample={(name)=>{
+          const navigateAction = NavigationActions.navigate({
+            routeName: name,
+            params: {},
+          })
+          navigation.dispatch(navigateAction)
+        }}
       />
     );
   }

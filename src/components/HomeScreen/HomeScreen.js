@@ -10,21 +10,21 @@ import {
 export default class HomeScreen extends React.Component {
 
   static defaultProps = {
-    goHome: ()=>{},
     goHomeDetail: ()=>{},
     goPeople: ()=>{},
     goChat: ()=>{},
     goSettings: ()=>{},
     goBack: ()=>{},
+    goExample: (exampleName)=>{},
   };
 
   static propTypes = {
-    goHome: PropTypes.func,
     goHomeDetail: PropTypes.func,
     goPeople: PropTypes.func,
     goChat: PropTypes.func,
     goSettings: PropTypes.func,
     goBack: PropTypes.func,
+    goExample: PropTypes.func,
   };
 
   render() {
@@ -33,10 +33,6 @@ export default class HomeScreen extends React.Component {
         <Button
           onPress={this.props.goHomeDetail}
           title="Go to home detail stack"
-        />
-        <Button
-          onPress={this.props.goHome}
-          title="Go to home tab"
         />
         <Button
           onPress={this.props.goPeople}
@@ -51,8 +47,28 @@ export default class HomeScreen extends React.Component {
           title="Go to Settings tab"
         />
         <Button
-          onPress={this.props.goBack}
-          title="Go back"
+          onPress={()=>{this.props.goExample('ViewExample')}}
+          title="Go View Example"
+        />
+        <Button
+          onPress={()=>{this.props.goExample('TextExample')}}
+          title="Go Text Example"
+        />
+        <Button
+          onPress={()=>{this.props.goExample('TextInputExample')}}
+          title="Go TextInput Example"
+        />
+        <Button
+          onPress={()=>{this.props.goExample('ImageExample')}}
+          title="Go Image Example"
+        />
+        <Button
+          onPress={()=>{this.props.goExample('ListViewExample')}}
+          title="Go ListView Example"
+        />
+        <Button
+          onPress={()=>{this.props.goExample('AnimatedExample')}}
+          title="Go Animated Example"
         />
       </ScrollView>
     );

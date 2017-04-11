@@ -20,16 +20,50 @@ import HomeDetailContainer from '../containers/HomeDetailContainer';
 const MyHomeScreen = StackNavigator({
   SubHome: {
     screen: HomeContainer,
-    path: '/',
     navigationOptions: {
       title: () => 'Home',
     },
   },
   HomeDetail: {
     screen: HomeDetailContainer,
-    path: '/people/:name',
     navigationOptions: {
-      title: ({ state }) => `11's Profile!`,
+      title: ({ state }) => `Home Detail`,
+    },
+  },
+  ViewExample: {
+    getScreen: () => require('../components/Example/ViewExample').default,
+    navigationOptions: {
+      title: () => 'View Example',
+    },
+  },
+  TextExample: {
+    getScreen: () => require('../components/Example/TextExample').default,
+    navigationOptions: {
+      title: () => 'Text Example',
+    },
+  },
+  TextInputExample: {
+    getScreen: () => require('../components/Example/TextInputExample').default,
+    navigationOptions: {
+      title: () => 'Text Example',
+    },
+  },
+  ImageExample: {
+    getScreen: () => require('../components/Example/ImageExample').default,
+    navigationOptions: {
+      title: () => 'Image Example',
+    },
+  },
+  ListViewExample: {
+    getScreen: () => require('../components/Example/ListViewExample').default,
+    navigationOptions: {
+      title: () => 'ListView Example',
+    },
+  },
+  AnimatedExample: {
+    getScreen: () => require('../components/Example/AnimatedExample').default,
+    navigationOptions: {
+      title: () => 'Animated Example',
     },
   },
 });

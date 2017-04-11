@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
+    "lottie-react-native": "^1.1.1",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.2",
     "react-native-code-push": "^2.0.1-beta",

@@ -14,7 +14,7 @@ const store = configureStore();
 class AppContainer extends React.Component {
   componentDidMount(){
     if (!__DEV__) {
-      CodePush.sync({updateDialog:false, installMode: CodePush.InstallMode.ON_NEXT_RESUME});
+      CodePush.sync({updateDialog:true, installMode: CodePush.InstallMode.ON_NEXT_RESUME});
     }
   }
   render() {
