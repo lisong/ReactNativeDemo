@@ -6,8 +6,13 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  TouchableWithoutFeedback,
+  TouchableHighlight
 } from 'react-native';
+
+import Dimensions from 'Dimensions';
+import dismissKeyboard from 'dismissKeyboard';
 
 export default class LoginScreen extends React.Component {
 
@@ -46,38 +51,42 @@ export default class LoginScreen extends React.Component {
   }
 
   render() {
+    let {width, height} = Dimensions.get('window');
     return (
-      <ScrollView style={styles.container}>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text style={{ fontSize:30,marginBottom:20 }}>登录</Text>
-          <View style={{flexDirection:'row', height: 50}} >
-            <Text style={{flex: 1, marginLeft:40, height: 50, paddingTop:20, textAlign:'center'}} >手机号码:</Text>
-            <TextInput
-              onChangeText={this.setPhone}
-              style={{flex: 3, height: 50, marginRight:15}}
-              placeholder="请输入手机号"
-              numberOfLines={1}
-              value={this.props.phone}
-              keyboardType = 'numeric'
-              maxLength = {11}
-              clearButtonMode = 'while-editing'
-            />
+      <ScrollView style={styles.container} keyboardShouldPersistTaps={'always'}>
+        <TouchableWithoutFeedback onPress={ () => { dismissKeyboard() } }>
+          <View style={{height:height, flex:1, alignItems: 'center'}}>
+            <Text style={{ fontSize:30,marginBottom:20 }}>登录</Text>
+            <View style={{flexDirection:'row', height: 50}} >
+              <Text style={{flex: 1, marginLeft:40, height: 50, paddingTop:20, textAlign:'center'}} >手机号码:</Text>
+              <TextInput
+                onChangeText={this.setPhone}
+                style={{flex: 3, height: 50, marginRight:15}}
+                placeholder="请输入手机号"
+                numberOfLines={1}
+                value={this.props.phone}
+                keyboardType = 'numeric'
+                maxLength = {11}
+                autoFocus={true}
+                clearButtonMode = 'while-editing'
+              />
+            </View>
+            <View style={{flexDirection:'row', height: 50}} >
+              <Text style={{flex: 1, marginLeft:40, height: 50, paddingTop:20, textAlign:'center'}} >密码:</Text>
+              <TextInput
+                onChangeText={this.setPassword}
+                style={{flex: 3, height: 50, marginRight:15}}
+                placeholder="请输入密码"
+                numberOfLines={1}
+                value={this.props.password}
+                secureTextEntry={true}
+                clearButtonMode = 'while-editing'
+              />
+            </View>
+            <View style={{width: 50, height: 50}} />
+            <Button title={this.props.isFetching ? '登录中...':'登录'} onPress={this.props.login} style={{width: 50, height: 50}} />
           </View>
-          <View style={{flexDirection:'row', height: 50}} >
-            <Text style={{flex: 1, marginLeft:40, height: 50, paddingTop:20, textAlign:'center'}} >密码:</Text>
-            <TextInput
-              onChangeText={this.setPassword}
-              style={{flex: 3, height: 50, marginRight:15}}
-              placeholder="请输入密码"
-              numberOfLines={1}
-              value={this.props.password}
-              secureTextEntry={true}
-              clearButtonMode = 'while-editing'
-            />
-          </View>
-          <View style={{width: 50, height: 50}} />
-          <Button title={this.props.isFetching ? '登录中...':'登录'} onPress={this.props.login} style={{width: 50, height: 50}} />
-        </View>
+        </TouchableWithoutFeedback>
      </ScrollView>
     );
   }

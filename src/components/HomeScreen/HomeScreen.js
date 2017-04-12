@@ -70,6 +70,10 @@ export default class HomeScreen extends React.Component {
           onPress={()=>{this.props.goExample('AnimatedExample')}}
           title="Go Animated Example"
         />
+        <Button
+          onPress={()=>{this.props.goExample('PanResponderExample')}}
+          title="Go PanResponder Example"
+        />
       </ScrollView>
     );
   }

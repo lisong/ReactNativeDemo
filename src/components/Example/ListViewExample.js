@@ -6,13 +6,20 @@ import {
 } from 'react-native';
 
 export default class ListViewExample extends React.Component {
+  constructor() {
+    super();
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    };
+  }
+
   render() {
     return (
-      <View style={{flexDirection: 'row', height: 100, padding: 20}}>
-        <View style={{backgroundColor: 'blue', flex: 0.3}} />
-        <View style={{backgroundColor: 'red', flex: 0.5}} />
-        <Text>Hello World!</Text>
-      </View>
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text>{rowData}</Text>}
+      />
     );
   }
 }

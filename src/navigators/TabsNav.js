@@ -66,6 +66,12 @@ const MyHomeScreen = StackNavigator({
       title: () => 'Animated Example',
     },
   },
+  PanResponderExample: {
+    getScreen: () => require('../components/Example/PanResponderExample'),
+    navigationOptions: {
+      title: () => 'PanResponde Example',
+    },
+  },
 });
 
 const MyPeopleScreen = ({ navigation }) => (
