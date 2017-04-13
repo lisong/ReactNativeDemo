@@ -47,13 +47,28 @@ var PanResponderExample = React.createClass({
   circle: (null : ?{ setNativeProps(props: Object): void }),
 
   componentWillMount: function() {
+// A gestureState object has the following:
+//
+// stateID - ID of the gestureState- persisted as long as there at least one touch on screen
+// moveX - the latest screen coordinates of the recently-moved touch
+// moveY - the latest screen coordinates of the recently-moved touch
+// x0 - the screen coordinates of the responder grant
+// y0 - the screen coordinates of the responder grant
+// dx - accumulated distance of the gesture since the touch started
+// dy - accumulated distance of the gesture since the touch started
+// vx - current velocity of the gesture
+// vy - current velocity of the gesture
+// numberActiveTouches - Number of touches currently on screen
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
+      onStartShouldSetPanResponderCapture:(evt, gestureState) => true,
       onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,
+      onMoveShouldSetPanResponderCapture:(evt, gestureState) => true,
       onPanResponderGrant: this._handlePanResponderGrant,
       onPanResponderMove: this._handlePanResponderMove,
       onPanResponderRelease: this._handlePanResponderEnd,
       onPanResponderTerminate: this._handlePanResponderEnd,
+      onPanResponderTerminationRequest: (evt, gestureState) => true,
     });
     this._previousLeft = 20;
     this._previousTop = 84;
